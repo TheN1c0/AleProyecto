@@ -20,6 +20,10 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
 
     const uploadImage = async (file) => {
         console.log("🚀 [DEBUG] Iniciando subida de imagen:", file.name, " Tamaño:", file.size);
+
+        const { data: session } = await supabase.auth.getSession();
+        console.log("SESSION:", session);
+
         const fileExt = file.name.split('.').pop();
         const fileName = `${Math.random()}.${fileExt}`;
         const filePath = `public/${fileName}`;
@@ -59,13 +63,21 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
                 description: formData.description,
                 price: parseFloat(formData.price),
                 published: formData.published,
-                image_url: image_url
+                // image_url: image_url // Temporarily omitted for testing
             };
 
             console.log("🚀 [DEBUG] Datos a enviar a Supabase:", productData);
 
             const { data: s } = await supabase.auth.getSession();
             console.log("✅ SESSION USER:", s.session?.user?.id, s.session?.user?.email);
+
+            const { data: userData } = await supabase.auth.getUser();
+            const { data: profile, error: profileError } = await supabase
+                .from("profiles")
+                .select("role")
+                .eq("id", userData?.user?.id)
+                .single();
+            console.log("PROFILE:", profile, "ERROR:", profileError);
 
             if (product?.id) {
                 console.log("🚀 [DEBUG] Actualizando producto ID:", product.id);

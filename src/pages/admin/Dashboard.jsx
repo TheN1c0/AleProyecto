@@ -18,8 +18,13 @@ const Dashboard = () => {
             .select('*')
             .order('created_at', { ascending: false });
 
+        console.log("🛠️ [DEBUG] Dashboard fetchProducts - Error:", error);
+        console.log("🛠️ [DEBUG] Dashboard fetchProducts - Data:", data);
+
         if (!error && data) {
             setProducts(data);
+        } else if (error) {
+            console.error("❌ [DEBUG] Failed to fetch products:", error.message);
         }
         setLoading(false);
     };

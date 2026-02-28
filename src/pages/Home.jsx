@@ -23,10 +23,10 @@ const Home = () => {
                 console.error('Error fetching products:', err.message);
                 // Fallback mock data if Supabase table doesn't exist yet
                 setProducts([
-                    { id: 1, name: 'Handcrafted Incense Holder', price: 45, imageUrl: 'https://images.unsplash.com/photo-1620893043258-3907a7e32bf0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                    { id: 2, name: 'Ritual Smudge Bundle', price: 28, imageUrl: 'https://images.unsplash.com/photo-1610486950275-c081e62128fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                    { id: 3, name: 'Artisan Ceramic Vase', price: 110, imageUrl: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
-                    { id: 4, name: 'Botanical Face Oil', price: 65, imageUrl: 'https://images.unsplash.com/photo-1615397323145-8bc54b678120?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                    { id: 1, name: 'Handcrafted Incense Holder', price: 45, image_url: 'https://images.unsplash.com/photo-1620893043258-3907a7e32bf0?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                    { id: 2, name: 'Ritual Smudge Bundle', price: 28, image_url: 'https://images.unsplash.com/photo-1610486950275-c081e62128fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                    { id: 3, name: 'Artisan Ceramic Vase', price: 110, image_url: 'https://images.unsplash.com/photo-1610701596007-11502861dcfa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
+                    { id: 4, name: 'Botanical Face Oil', price: 65, image_url: 'https://images.unsplash.com/photo-1615397323145-8bc54b678120?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80' },
                 ]);
             } finally {
                 setLoading(false);

@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
                 borderRadius: 'var(--radius-medium)'
             }}>
                 <img
-                    src={product.imageUrl || '/placeholder.png'}
+                    src={product.image_url || '/placeholder.png'}
                     alt={product.name}
                     onError={(e) => { e.target.onerror = null; e.target.src = '/placeholder.png'; }}
                     style={{

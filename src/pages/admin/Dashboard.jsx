@@ -100,7 +100,7 @@ const Dashboard = () => {
                                         <tr key={product.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                                             <td style={{ padding: '1rem 0' }}>
                                                 <img
-                                                    src={product.imageUrl || '/placeholder.png'}
+                                                    src={product.image_url || '/placeholder.png'}
                                                     alt={product.name}
                                                     onError={(e) => { e.target.onerror = null; e.target.src = '/placeholder.png'; }}
                                                     style={{ width: '50px', height: '50px', objectFit: 'cover', borderRadius: '4px' }}

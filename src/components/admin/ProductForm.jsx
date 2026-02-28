@@ -19,20 +19,26 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
     };
 
     const uploadImage = async (file) => {
+        console.log("🚀 [DEBUG] Iniciando subida de imagen:", file.name, " Tamaño:", file.size);
         const fileExt = file.name.split('.').pop();
         const fileName = `${Math.random()}.${fileExt}`;
         const filePath = `public/${fileName}`;
 
+        console.log("🚀 [DEBUG] Subiendo al bucket 'product-images' con path:", filePath);
         const { error: uploadError } = await supabase.storage
             .from('product-images')
             .upload(filePath, file);
 
-        if (uploadError) throw uploadError;
+        if (uploadError) {
+            console.error("❌ [DEBUG] Error de Supabase Storage:", uploadError);
+            throw uploadError;
+        }
 
         const { data } = supabase.storage
             .from('product-images')
             .getPublicUrl(filePath);
 
+        console.log("✅ [DEBUG] Imagen subida exitosamente. URL Pública:", data.publicUrl);
         return data.publicUrl;
     };
 
@@ -42,10 +48,10 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
         setError(null);
 
         try {
-            let imageUrl = product?.imageUrl || '/placeholder.png';
+            let image_url = product?.image_url || '/placeholder.png';
 
             if (imageFile) {
-                imageUrl = await uploadImage(imageFile);
+                image_url = await uploadImage(imageFile);
             }
 
             const productData = {
@@ -53,24 +59,41 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
                 description: formData.description,
                 price: parseFloat(formData.price),
                 published: formData.published,
-                imageUrl: imageUrl
+                image_url: image_url
             };
 
+            console.log("🚀 [DEBUG] Datos a enviar a Supabase:", productData);
+
+            const { data: s } = await supabase.auth.getSession();
+            console.log("✅ SESSION USER:", s.session?.user?.id, s.session?.user?.email);
+
             if (product?.id) {
+                console.log("🚀 [DEBUG] Actualizando producto ID:", product.id);
                 const { error } = await supabase
                     .from('products')
                     .update(productData)
                     .eq('id', product.id);
-                if (error) throw error;
+
+                if (error) {
+                    console.error("❌ [DEBUG] Error al actualizar:", error);
+                    throw error;
+                }
             } else {
+                console.log("🚀 [DEBUG] Insertando nuevo producto...");
                 const { error } = await supabase
                     .from('products')
                     .insert([productData]);
-                if (error) throw error;
+
+                if (error) {
+                    console.error("❌ [DEBUG] Error al insertar:", error);
+                    throw error;
+                }
             }
 
+            console.log("✅ [DEBUG] Operación exitosa en Supabase.");
             onSuccess();
         } catch (err) {
+            console.error("❌ [DEBUG] Error atrapado en handleSubmit:", err);
             setError(err.message);
         } finally {
             setLoading(false);
@@ -130,7 +153,7 @@ const ProductForm = ({ product, onSuccess, onCancel }) => {
             />
             {product && !imageFile && (
                 <img
-                    src={product.imageUrl || '/placeholder.png'}
+                    src={product.image_url || '/placeholder.png'}
                     alt="Current"
                     onError={(e) => { e.target.onerror = null; e.target.src = '/placeholder.png'; }}
                     style={{ width: '100px', height: '100px', objectFit: 'cover', marginBottom: '1rem' }}

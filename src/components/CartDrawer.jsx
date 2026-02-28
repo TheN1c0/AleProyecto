@@ -72,7 +72,7 @@ const CartDrawer = () => {
                             {cartItems.map(item => (
                                 <div key={item.id} style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                                     <img
-                                        src={item.imageUrl || '/placeholder.png'}
+                                        src={item.image_url || '/placeholder.png'}
                                         alt={item.name}
                                         onError={(e) => { e.target.onerror = null; e.target.src = '/placeholder.png'; }}
                                         style={{ width: '80px', height: '100px', objectFit: 'cover', borderRadius: 'var(--radius-small)' }}

@@ -1,0 +1,81 @@
+:root {
+  /* Colors - Primary */
+  --color-primary-forestDeep: #0B1A14;
+  --color-primary-forest: #10261D;
+  --color-primary-forestSoft: #1B3328;
+
+  /* Colors - Secondary */
+  --color-secondary-oliveMuted: #6E745F;
+  --color-secondary-oliveDark: #5A604D;
+
+  /* Colors - Accent */
+  --color-accent-goldSoft: #B8A46A;
+  --color-accent-goldWarm: #C2A96F;
+
+  /* Colors - Neutral */
+  --color-neutral-cream: #E8E2D4;
+  --color-neutral-creamSoft: #F2EEE4;
+  --color-neutral-beigeCard: #DDD4C4;
+  --color-neutral-ink: #111111;
+  --color-neutral-white: #FFFFFF;
+
+  /* Colors - Overlay */
+  --color-overlay-darkGradientTop: rgba(0,0,0,0.55);
+  --color-overlay-darkGradientBottom: rgba(0,0,0,0.75);
+
+  /* Colors - States */
+  --color-states-hoverDarken: rgba(0,0,0,0.1);
+  --color-states-focusRing: #C2A96F;
+
+  /* Typography */
+  --font-family-serifDisplay: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-family-serifBody: 'EB Garamond', 'Crimson Text', serif;
+  --font-family-sansUI: 'Inter', 'Helvetica Neue', sans-serif;
+
+  /* Typography Scale */
+  --font-hero-size: clamp(2.8rem, 5vw, 4.5rem);
+  --font-hero-weight: 500;
+  --font-hero-letterSpacing: 0.02em;
+  --font-hero-lineHeight: 1.1;
+
+  --font-section-size: clamp(1.8rem, 3vw, 2.8rem);
+  --font-section-weight: 500;
+  --font-section-lineHeight: 1.2;
+
+  --font-card-size: 1.3rem;
+  --font-card-weight: 500;
+  --font-card-lineHeight: 1.3;
+
+  --font-body-size: 1rem;
+  --font-body-weight: 400;
+  --font-body-lineHeight: 1.7;
+
+  --font-smallCaps-size: 0.85rem;
+  --font-smallCaps-weight: 500;
+  --font-smallCaps-letterSpacing: 0.12em;
+
+  --font-button-size: 0.9rem;
+  --font-button-weight: 500;
+  --font-button-letterSpacing: 0.08em;
+
+  /* Spacing */
+  --spacing-section-vertical: 6rem;
+  --spacing-section-verticalMobile: 4rem;
+  --spacing-container-maxWidth: 1200px;
+  --spacing-grid-gap: 2rem;
+  --spacing-card-padding: 1.5rem;
+  --spacing-button-padding: 0.9rem 1.8rem;
+
+  /* Radius */
+  --radius-small: 4px;
+  --radius-medium: 6px;
+  --radius-large: 10px;
+
+  /* Shadow */
+  --shadow-soft: 0 10px 30px rgba(0,0,0,0.25);
+  --shadow-hoverLift: 0 15px 40px rgba(0,0,0,0.35);
+  
+  /* Transitions */
+  --transition-duration: 250ms;
+  --transition-easing: ease-in-out;
+}
